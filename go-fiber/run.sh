@@ -1,0 +1,1 @@
+go run cmd/faker-api/main.go
