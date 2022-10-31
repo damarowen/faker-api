@@ -20,7 +20,7 @@ services:
     ports: 
       - 3306:3306
     environment: 
-      - MYSQL_DATABASE=faker_api
+      - MYSQL_DATABASE=${DB_NAME}
       - MYSQL_ALLOW_EMPTY_PASSWORD=true
     volumes:
       - database_mysql:/var/lib/mysql

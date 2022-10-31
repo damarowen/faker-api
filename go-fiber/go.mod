@@ -5,6 +5,7 @@ go 1.19
 require (
 	github.com/bxcodec/faker/v3 v3.8.0
 	github.com/gofiber/fiber/v2 v2.39.0
+	github.com/joho/godotenv v1.4.0
 	gorm.io/driver/mysql v1.4.3
 	gorm.io/gorm v1.24.0
 )
@@ -12,7 +13,6 @@ require (
 require (
 	github.com/go-playground/locales v0.14.0 // indirect
 	github.com/go-playground/universal-translator v0.18.0 // indirect
-	github.com/joho/godotenv v1.4.0 // indirect
 	github.com/leodido/go-urn v1.2.1 // indirect
 	golang.org/x/crypto v0.0.0-20220214200702-86341886e292 // indirect
 	golang.org/x/text v0.3.7 // indirect
