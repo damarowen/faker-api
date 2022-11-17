@@ -11,22 +11,10 @@ import { FakerEntity } from './faker/entities/faker.entity';
     isGlobal: true,
     load: [database],
   }),
-  TypeOrmModule.forRoot({
-    type: 'mysql',
-    host: "localhost",
-    port: process.env.DB_PORT ? parseInt(process.env.DB_PORT) : 3306,
-    username: "root",
-    database: "faker_api",
-    entities: [FakerEntity],
-    synchronize: process.env.SYNC_SCHEMA === 'true' ? true : false, // disabled for auto migration syncronize
-    logging: ["error"],
-    maxQueryExecutionTime: 10000,
-    keepConnectionAlive: true,
-    extra: {
-      connectionLimit: 20,
-    },
-  }),
-  FakerModule
+  TypeOrmModule.forRootAsync({
+    useFactory: (configs: ConfigService) => configs.get("db_config"),
+    inject: [ConfigService],
+  }),  FakerModule
 ],
   controllers: [],
   providers: [],

@@ -22,3 +22,9 @@ async function bootstrap() {
   await app.listen(8000, `0.0.0.0`);
 }
 bootstrap();
+
+
+//todo
+///todo add date column
+//todo delete to soft delete
+//todo docker
