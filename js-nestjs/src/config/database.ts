@@ -13,7 +13,7 @@ export const database = (): DbConfiguration => ({
     database: "faker_api",
     entities: [__dirname + '/../**/*.entity{.ts,.js}'],
     synchronize: process.env.SYNC_SCHEMA === 'true' ? true : false, // disabled for auto migration syncronize
-    logging: ["error"],
+    logging: true,
     maxQueryExecutionTime: 10000,
     keepConnectionAlive: true,
     extra: {
