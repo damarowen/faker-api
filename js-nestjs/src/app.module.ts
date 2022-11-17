@@ -1,10 +1,9 @@
 import { Module } from '@nestjs/common';
 import { ConfigModule, ConfigService } from '@nestjs/config';
-import { AppController } from './app.controller';
-import { AppService } from './app.service';
 import { database } from './config/database';
 import { FakerModule } from './faker/faker.module';
 import { TypeOrmModule } from "@nestjs/typeorm";
+import { FakerEntity } from './faker/entities/faker.entity';
 
 @Module({
   imports: [
@@ -18,7 +17,7 @@ import { TypeOrmModule } from "@nestjs/typeorm";
     port: process.env.DB_PORT ? parseInt(process.env.DB_PORT) : 3306,
     username: "root",
     database: "faker_api",
-    entities: [__dirname + '/../**/*.entity{.ts,.js}'],
+    entities: [FakerEntity],
     synchronize: process.env.SYNC_SCHEMA === 'true' ? true : false, // disabled for auto migration syncronize
     logging: ["error"],
     maxQueryExecutionTime: 10000,
@@ -29,7 +28,7 @@ import { TypeOrmModule } from "@nestjs/typeorm";
   }),
   FakerModule
 ],
-  controllers: [AppController],
-  providers: [AppService],
+  controllers: [],
+  providers: [],
 })
 export class AppModule {}

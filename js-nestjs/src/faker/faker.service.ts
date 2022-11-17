@@ -1,26 +1,18 @@
-import { Injectable } from '@nestjs/common';
-import { CreateFakerDto } from './dto/create-faker.dto';
-import { UpdateFakerDto } from './dto/update-faker.dto';
+import { Injectable } from "@nestjs/common";
+import { InjectRepository } from "@nestjs/typeorm";
+import { Repository } from "typeorm";
+import { CreateFakerDto } from "./dto/create-faker.dto";
+import { UpdateFakerDto } from "./dto/update-faker.dto";
+import { FakerEntity } from "./entities/faker.entity";
+import { FakerRepository } from "./repository/faker.repository";
 
 @Injectable()
 export class FakerService {
-  create(createFakerDto: CreateFakerDto) {
-    return 'This action adds a new faker';
-  }
+    constructor(
+    private fakerRepo: FakerRepository
+  ) {}
 
-  findAll() {
-    return `This action returns all faker`;
-  }
-
-  findOne(id: number) {
-    return `This action returns a #${id} faker`;
-  }
-
-  update(id: number, updateFakerDto: UpdateFakerDto) {
-    return `This action updates a #${id} faker`;
-  }
-
-  remove(id: number) {
-    return `This action removes a #${id} faker`;
+  findAll(): Promise<FakerEntity[]> {
+    return this.fakerRepo.getTasks()
   }
 }
